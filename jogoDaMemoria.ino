@@ -30,11 +30,6 @@ int modo = 0;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 const int Buzzer = 9;
-unsigned int la = 440;
-unsigned int sol = 392;
-unsigned long tempo = 1000;
-
-int Tom = 100;
 
 int telaAtual = 1;
 
@@ -68,12 +63,14 @@ void erro() {
 
   digitalWrite(Buzzer, LOW);
   noTone(Buzzer);
+  delay(1200);
+  lcd.clear();
 }
 
 void sortear() {
-  //srand(time(0));
+ 
   size = 0;
-  //aleatorio = 1 + rand() % (1-4);
+  
   aleatorio = random(1, 5);
 
   do {
@@ -224,7 +221,7 @@ void loop() {
     if (posAtual < size) {
 
       if (EstadoBtn1 == HIGH) {
-        //if(botaoApertado == false){
+    
 
 
         digitalWrite(LedPin1, HIGH);
@@ -239,10 +236,6 @@ void loop() {
         } else {
           erro();
         }
-        //botaoApertado = true;
-        //}
-
-
       } else {
         //botaoApertado = false;
         digitalWrite(LedPin1, LOW);
@@ -361,7 +354,7 @@ void loop() {
       lcd.print("Voce venceu");
       }
        
-      for(int i = 0; i < 3; i++){
+      for(int i = 0; i < 4; i++){
         digitalWrite(LedPin1, HIGH);
         delay(500);
         digitalWrite(LedPin1, LOW);
@@ -459,7 +452,7 @@ void loop() {
       game = false;
       posArray++;
 
-      delay(500);
+      delay(200);
     } else {
       digitalWrite(LedPin1, LOW);
       digitalWrite(LedPin2, LOW);
